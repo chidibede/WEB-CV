@@ -5,7 +5,9 @@ import React, { FunctionComponent } from "react";
 export type LinkType = {
   name: string;
   href: string;
-  icon: any;
+  icon?: any;
+  buttonStyle?: string;
+  buttonColor?: string;
 };
 
 export const SideBarMenu: FunctionComponent<{ links: Array<any> }> = ({
@@ -19,12 +21,13 @@ export const SideBarMenu: FunctionComponent<{ links: Array<any> }> = ({
       width="8vw"
       color="#2e83f2"
       borderRight="2px solid #ebecf0"
+      bg="white"
     >
       {links.map((link: LinkType) => (
-        <Link href={link.href}>
+        <Link href={link.href} key={link.name}>
           <Box
             _hover={{ cursor: "pointer", bg: "#edeff0" }}
-            fontSize={26}
+            fontSize={24}
             textAlign="center"
             pb={8}
             pt={8}

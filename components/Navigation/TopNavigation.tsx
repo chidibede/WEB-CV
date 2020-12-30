@@ -1,22 +1,15 @@
 import {
   Box,
   Button,
-  Flex,
   HStack,
-  Icon,
   Spacer,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { FunctionComponent } from "react";
+import { LinkType } from "./SideBar";
 
-export type LinkType = {
-  name: string;
-  href: string;
-  icon: any;
-};
-
-export const TopBarMenu: FunctionComponent<{ links?: Array<any> }> = ({
+export const TopBarMenu: FunctionComponent<{ links?: Array<LinkType> }> = ({
   links,
 }) => {
   {
@@ -37,22 +30,21 @@ export const TopBarMenu: FunctionComponent<{ links?: Array<any> }> = ({
           </Text>
         </Link>
         <Spacer />
-        <Link href="/login">
+
+        {links.map((link: LinkType) => (
+        <Link href={link.href} key={link.name}>
           <Button
-            bg="transparent"
-            color="white"
+            bg={link.buttonStyle}
+            color={link.buttonColor || "white"}
             _hover={{ bg: "blue.400" }}
             fontSize={20}
           >
-            Sign In
+            {link.name}
           </Button>
         </Link>
+      ))}
 
-        <Link href="/register">
-          <Button bg="white" color="blue.500" fontSize={20}>
-            Create an account
-          </Button>
-        </Link>
+    
       </HStack>
     </Box>
   );
