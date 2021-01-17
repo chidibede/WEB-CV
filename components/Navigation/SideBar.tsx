@@ -18,10 +18,10 @@ export const SideBarMenu: FunctionComponent<{ links: Array<any> }> = ({
     <Flex
       flexDirection="column"
       height="92vh"
-      width="8vw"
       color="#2e83f2"
       borderRight="2px solid #ebecf0"
       bg="white"
+     
     >
       {links.map((link: LinkType) => (
         <Link href={link.href} key={link.name}>
@@ -31,6 +31,9 @@ export const SideBarMenu: FunctionComponent<{ links: Array<any> }> = ({
             textAlign="center"
             pb={8}
             pt={8}
+            width="8vw"
+            // pr={4}
+            // pl={4}
           >
             <Icon as={link.icon} />
             <Text>{link.name}</Text>

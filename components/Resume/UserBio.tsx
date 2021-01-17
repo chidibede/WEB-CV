@@ -25,7 +25,7 @@ export const UserBioComponent: FunctionComponent<{
 
   return (
     <>
-      <HStack ml={6} mr={6} mt={2} mb={2} fontFamily="serif">
+      <HStack ml={4} mr={4} mt={2} mb={2} fontFamily="serif">
         <Icon as={icon} color="blue.400" fontSize={20} mr={8} />
         <Text fontSize={26}>{bio ? bio : `${placeholder}`}</Text>
         <Spacer />

@@ -10,6 +10,7 @@ import {
   Text,
   useDisclosure,
   Progress,
+  VStack,
   Flex,
   Select,
   Accordion,
@@ -21,11 +22,11 @@ import { Field, Form, Formik } from "formik";
 import React, { FunctionComponent, useState } from "react";
 import { FaBookReader, FaPencilAlt, FaPlusCircle } from "react-icons/fa";
 
-type SkillType = { skillName: string; rating: number };
+type LanguageType = { languageName: string; rating: number };
 
-export const SkillsComponent: FunctionComponent<{}> = ({}) => {
-  const [skills, setSkills] = useState<SkillType[]>([
-    { skillName: "", rating: 0 },
+export const LanguagesComponent: FunctionComponent<{}> = ({}) => {
+  const [languages, setLanguages] = useState<LanguageType[]>([
+    { languageName: "", rating: 0 },
   ]);
   const { isOpen, onClose, onToggle } = useDisclosure();
 
@@ -33,7 +34,7 @@ export const SkillsComponent: FunctionComponent<{}> = ({}) => {
     <>
       <HStack ml={6} mr={6} mb={2} mt={10} fontFamily="serif">
         <Icon as={FaBookReader} color="blue.400" fontSize={20} mr={8} />
-        <Text fontSize={26}>Skills</Text>
+        <Text fontSize={26}>Languages</Text>
         <Spacer />
         <Box onClick={onToggle} _hover={{ cursor: "pointer" }}>
           <Icon as={FaPlusCircle} color="blue.400" fontSize={24} mb={1} />
@@ -42,25 +43,25 @@ export const SkillsComponent: FunctionComponent<{}> = ({}) => {
 
       <Collapse in={isOpen} animateOpacity>
         <Formik
-          initialValues={{ skillName: "", rating: 0 }}
+          initialValues={{ languageName: "", rating: 0 }}
           onSubmit={(values, { resetForm }) => {
             console.log(values);
-            setSkills([...skills, { ...values }]);
+            setLanguages([...languages, { ...values }]);
             resetForm();
             onClose();
           }}
         >
           {() => (
             <Form>
-              <Field name="skillName">
+              <Field name="languageName">
                 {({ field, form }: { field: any; form: any }) => (
                   <FormControl pl={6} pr={6} mt={2}>
                     <Input
                       {...field}
                       bg="#f0f1f2"
                       type="text"
-                      placeholder="Skill Name"
-                      id="skillName"
+                      placeholder="Language Name"
+                      id="languageName"
                     />
                   </FormControl>
                 )}
@@ -102,15 +103,20 @@ export const SkillsComponent: FunctionComponent<{}> = ({}) => {
           )}
         </Formik>
       </Collapse>
-      {skills &&
-        skills.map((skill, index, skills) => (
-          <Flex flexDirection="column" key={skill.skillName} ml={6} mb={4}>
-            {skill.skillName && (
+      {languages &&
+        languages.map((language, index, languages) => (
+          <Flex
+            flexDirection="column"
+            key={language.languageName}
+            ml={6}
+            mb={4}
+          >
+            {language.languageName && (
               <>
                 <Accordion allowToggle>
                   <AccordionItem>
                     <HStack>
-                      <Text fontSize={18}>{skill.skillName}</Text>
+                      <Text fontSize={18}>{language.languageName}</Text>
                       <Spacer />
                       <AccordionButton w="10%" mr={6} p={2}>
                         <Icon
@@ -126,7 +132,7 @@ export const SkillsComponent: FunctionComponent<{}> = ({}) => {
                       isAnimated
                       borderRadius={12}
                       h={4}
-                      value={skill.rating}
+                      value={language.rating}
                       mr={6}
                       mt={4}
                     />
@@ -134,27 +140,28 @@ export const SkillsComponent: FunctionComponent<{}> = ({}) => {
                     <AccordionPanel pb={4}>
                       <Formik
                         initialValues={{
-                          skillName: skill.skillName,
-                          rating: skill.rating,
+                          languageName: language.languageName,
+                          rating: language.rating,
                         }}
                         onSubmit={(values) => {
-                          const newSkills = skills.slice();
-                          newSkills[index].skillName = values.skillName;
-                          newSkills[index].rating = values.rating;
-                          setSkills([...newSkills]);
+                          const newLanguages = languages.slice();
+                          newLanguages[index].languageName =
+                            values.languageName;
+                          newLanguages[index].rating = values.rating;
+                          setLanguages([...newLanguages]);
                         }}
                       >
                         {() => (
                           <Form>
-                            <Field name="skillName">
+                            <Field name="languageName">
                               {({ field, form }: { field: any; form: any }) => (
                                 <FormControl pl={6} pr={6} mt={2}>
                                   <Input
                                     {...field}
                                     bg="#f0f1f2"
                                     type="text"
-                                    placeholder="Skill Name"
-                                    id="skillName"
+                                    placeholder="Language Name"
+                                    id="languageName"
                                   />
                                 </FormControl>
                               )}
