@@ -1,9 +1,10 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import React, { FunctionComponent } from "react";
 import { FaBriefcase, FaPhone, FaEnvelope, FaHome } from "react-icons/fa";
 import { LanguagesComponent } from "./Languages";
 import { SkillsComponent } from "./Skills";
 import { UserBioComponent } from "./UserBio";
+import WorkExperience from "./Work";
 
 const ResumeComponent: FunctionComponent<{}> = ({}) => {
   const userBio = [
@@ -59,7 +60,9 @@ const ResumeComponent: FunctionComponent<{}> = ({}) => {
         <LanguagesComponent />
       </Flex>
       {/* </Box> */}
-      <Flex width="64vw" backgroundColor="white" ml={4} mt={2} mb={4}></Flex>
+      <Flex>
+        <WorkExperience />
+      </Flex>
     </Flex>
   );
 };

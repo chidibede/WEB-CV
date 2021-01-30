@@ -44,7 +44,6 @@ export const SkillsComponent: FunctionComponent<{}> = ({}) => {
         <Formik
           initialValues={{ skillName: "", rating: 0 }}
           onSubmit={(values, { resetForm }) => {
-            console.log(values);
             setSkills([...skills, { ...values }]);
             resetForm();
             onClose();
