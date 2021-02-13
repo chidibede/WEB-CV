@@ -30,7 +30,7 @@ const ResumeComponent: FunctionComponent<{}> = ({}) => {
         flexDirection="column"
         width="24vw"
         backgroundColor="white"
-        mr={4}
+        mr={2}
         ml={4}
         mt={2}
         mb={4}
@@ -60,7 +60,8 @@ const ResumeComponent: FunctionComponent<{}> = ({}) => {
         <LanguagesComponent />
       </Flex>
       {/* </Box> */}
-      <Flex>
+      <Flex flexDirection="column">
+        <WorkExperience />
         <WorkExperience />
       </Flex>
     </Flex>

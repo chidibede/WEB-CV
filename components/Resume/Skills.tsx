@@ -106,17 +106,18 @@ export const SkillsComponent: FunctionComponent<{}> = ({}) => {
           <Flex flexDirection="column" key={skill.skillName} ml={6} mb={4}>
             {skill.skillName && (
               <>
-                <Accordion allowToggle>
+                <Accordion colorScheme="red" allowToggle>
                   <AccordionItem>
                     <HStack>
                       <Text fontSize={18}>{skill.skillName}</Text>
                       <Spacer />
-                      <AccordionButton w="10%" mr={6} p={2}>
+                      <AccordionButton  _active={{bg: "white", border: "0px solid white"}} w="10%" mr={6} p={2} _hover={ {bg:"white"}} >
                         <Icon
                           as={FaPencilAlt}
                           color="blue.400"
                           fontSize={20}
                           mb={1}
+                          _active={{bg: "white", border: "none"}}
                         />
                       </AccordionButton>
                     </HStack>
